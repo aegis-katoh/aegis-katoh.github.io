@@ -1,103 +1,15 @@
-<?php
-#-------------- file information --------------#
-	# coding : UTF-8
-	# developer : Masazumi Katoh
-	# filename : home_Ver.1.1.5.php
-	# last update : 2017/10/17
-	# version : 1.1.5
-#-------------- file information --------------#
-
-#-------------- system setting --------------#
-	# Set timezone
-	date_default_timezone_set("Asia/Tokyo");
-#-------------- system setting --------------#
-
-#-------------- initial setting --------------#
-	# interval [min]
-	$interval = 1;
-	# min -> sec
-	$interval *=60;
-	# filepath
-	$filepath = "graph.png";
-	# path of current value
-	$current = "CurrentValue/";
-	# decimal digit of temperature
-	$dedi_temp = 2;
-	# decimal digit of humidity
-	$dedi_humid = 2;
-	# decimal digit of pressure
-	$dedi_pres = 2;
-#-------------- initial setting --------------#
-
-#-------------- parameter definition --------------#
-	# current time
-	$timestamp = time();
-	# updated time
-	$mod = filemtime( $filepath );
-	# remainder [sec]
-	$remainder = $timestamp % $interval;
-	# compensate
-	$compensate = $interval - $remainder;
-	# next update time
-	$nextupdate = $timestamp + $compensate;
-	# current temperature
-	$temperature = file_get_contents($current."temperature.txt");
-	# current humidity
-	$humidity = file_get_contents($current."humidity.txt");
-	# current pressure
-	$pressure = file_get_contents($current."pressure.txt");
-#-------------- parameter definition --------------#
-
-#-------------- debug --------------#
-	# interval [sec]
-	#	echo "$interval <br>";
-	# current time [sec]
-	#	echo "$timestamp <br>";
-	# remainder [sec]
-	#	echo "$remainder <br>";
-#-------------- debug --------------#
- ?>
-
 <! DOCTYPE html >
 <html>
 	<head>
-		<meta http-equiv="Refresh" content=<?= "$interval" ?>>
+		<meta http-equiv="Refresh" content=<?=60>
 		<link href="home.css" rel="stylesheet" type="text/css">
 		<title>Environmental Measurement</title>
 	</head>
 	<body>
 
-		<! box >
-		<div class="parent">
-			<! time information >
-			<div class="tag_box_b">
-				<p>
-					<div style="margin-bottom:10px;">
-						<b>Time</b>
-					</div>
-					<?= "Current Time：", date("Y/m/d H:i:s", $timestamp), "<br>" ?>
-					<?= "Last Update：", date("Y/m/d H:i:s", $mod), "<br>" ?>
-					<?= "Next Update：", date("Y/m/d H:i:s", $nextupdate) ?>
-				</p>
-			</div>
-
-			 <! current value >
-			<div class="tag_box_p">
-				<p>
-					<div style="margin-bottom:10px;">
-						<b>Current Value</b>
-					</div>
-					<?= "Temperature：", number_format($temperature, $dedi_temp, null, ""), " [deg]<br>" ?>
-					<?= "Humidity：", number_format($humidity, $dedi_humid, null, ""), " [%]<br>" ?>
-					<?= "Pressure：", number_format($pressure, $dedi_pres, null, ""), " [hPa]" ?>
-				</p>
-			</div>
-		</div>
-
 		<! graph output >
-
 		<div class="img_block">
-			<img id="graph" src=<?= $filepath ?> , style="width:90%; height:auto", alt="Temperature, Himudity and Pressure">
+			<img id="graph" src="graph.png" , style="width:90%; height:auto", alt="Temperature, Himudity and Pressure">
 		</div>
 
 	</body>
