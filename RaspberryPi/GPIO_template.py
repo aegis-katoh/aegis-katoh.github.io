@@ -11,7 +11,7 @@ sampling_freq = 50
 wait_time = 1 / sampling_freq
 
 # date
-date = datetime.now().strftime("%Y%m%d_%H%M%S")
+date = datetime.now().strftime("%Y%m%d_%H:%M:%S")
 logfile = date + "log.txt"
 
 # select GPIO.BCM or GPIO.BOARD
