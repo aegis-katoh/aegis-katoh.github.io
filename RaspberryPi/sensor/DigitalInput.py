@@ -1,3 +1,6 @@
+# This program is written in Python3
+
+# Library to use GPIO
 import RPi.GPIO as GPIO
 import time
 

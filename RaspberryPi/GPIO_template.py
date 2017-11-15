@@ -1,0 +1,34 @@
+# This program is written in Python3
+
+# Library to use GPIO
+import RPi.GPIO as GPIO
+# Library to get date
+from datetime import datetime
+import time
+
+# sampling frequency [Hz]
+sampling_freq = 50
+
+# date
+date = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# select GPIO.BCM or GPIO.BOARD
+# GPIO.BCM is based on GPIO pin number
+# GPIO.BOARD is based on Raspberry Pi's pin number
+GPIO.setmode(GPIO.BCM)
+# define input pin number
+PIN = xx
+# initial setting to use GPIO
+GPIO.setup(PIN, GPIO.IN)
+
+# open file to record log
+fp = open(date + "log.txt", "w")
+
+while True:
+	# digit
+	value = GPIO.input(PIN)
+	# write digital value to log file
+	fp.write( str(value) + "\n")
+	print( str(i) + ":" + str(value) )
+	i += 1
+	time.sleep(1 / sampling_freq)
