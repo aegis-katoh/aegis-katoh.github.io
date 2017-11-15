@@ -12,7 +12,7 @@ wait_time = 1 / sampling_freq
 
 # date
 date = datetime.now().strftime("%Y%m%d_%H:%M:%S")
-logfile = date + "log.txt"
+logfile = date + "_log.txt"
 
 # select GPIO.BCM or GPIO.BOARD
 # GPIO.BCM is based on GPIO pin number
