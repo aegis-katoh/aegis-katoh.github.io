@@ -1,4 +1,4 @@
-# This program is written in Python2:
+# This program is written in Python3
 
 # Library to use GPIO
 import RPi.GPIO as GPIO
@@ -60,5 +60,5 @@ while True:
 
 	# write digital value to log file
 	writer.writerow([record_time, value_now, count, product_rate])
-	print(record_time, value_now, count, product_rate)
+	#print(record_time, value_now, count, product_rate)
 	time.sleep(wait_time)
