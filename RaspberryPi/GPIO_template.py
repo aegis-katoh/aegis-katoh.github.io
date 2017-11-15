@@ -26,6 +26,7 @@ GPIO.setup(PIN, GPIO.IN)
 fp = open(logfile, "w")
 print("opened log file ", logfile)
 
+i = 0
 while True:
 	# digit
 	value = GPIO.input(PIN)
