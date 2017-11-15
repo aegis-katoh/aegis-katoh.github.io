@@ -8,6 +8,7 @@ import time
 
 # sampling frequency [Hz]
 sampling_freq = 50
+wait_time = 1 / sampling_freq
 
 # date
 date = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -34,4 +35,4 @@ while True:
 	fp.write( str(value) + "\n")
 	print( str(i) + ":" + str(value) )
 	i += 1
-	time.sleep(1 / sampling_freq)
+	time.sleep(wait_time)
