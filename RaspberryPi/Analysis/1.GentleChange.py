@@ -17,8 +17,8 @@ value_past = 1
 count = 0
 
 # date
-date_now = datetime.now().strftime("%Y%m%d_%H:%M:%S")
-logfile = date_now + "_log.csv"
+date = datetime.now().strftime("%Y%m%d")
+logfile = date + "_log.csv"
 
 # select GPIO.BCM or GPIO.BOARD
 # GPIO.BCM is based on GPIO pin number
@@ -30,10 +30,11 @@ PIN = 10
 GPIO.setup(PIN, GPIO.IN)
 
 # open file to record log
-writer = csv.writer(open(logfile, "w"))
+writer = csv.writer(open(logfile, "a"))
 
-# write initial row
-writer.writerow(["Time", "Switch", "Count", "Rate"])
+# set label
+if not path.exists(logfile,):
+	writer.writerow(["Time", "Switch", "Count", "Rate"])
 
 # start time
 start_time = datetime.now().timestamp()
