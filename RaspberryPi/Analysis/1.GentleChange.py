@@ -35,7 +35,8 @@ writer = csv.writer(open(logfile, "w"))
 # write initial row
 writer.writerow(["Time", "Switch", "Count", "Rate"])
 
-start_time = datetime.now()
+# start time
+start_time = datetime.now().timestamp()
 
 while True:
 	# record time
@@ -44,13 +45,15 @@ while True:
 	value_now = GPIO.input(PIN)
 	# differential
 	diff = value_now - value_past
-	
+
 	if (diff == 1):
 		count += 1
-	
-	now_time = datetime.now()
 
-	product_rate = count / (now_time.timestamp() - start_time.timestamp()) * 60
+	# time to calclate differential
+	now_time = datetime.now().timestamp()
+
+	# product per minute
+	product_rate = count / (now_time - start_time) * 60
 
 	value_past = value_now
 
