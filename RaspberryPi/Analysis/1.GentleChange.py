@@ -29,12 +29,12 @@ PIN = 10
 # initial setting to use GPIO
 GPIO.setup(PIN, GPIO.IN)
 
-# open file to record log
-writer = csv.writer(open(logfile, "a"))
-
 # set label
 if not path.exists(logfile,):
 	writer.writerow(["Time", "Switch", "Count", "Rate"])
+
+# open file to recoed log
+writer = csv.writer(open(logfile, "a"))
 
 # start time
 start_time = datetime.now().timestamp()
@@ -60,5 +60,5 @@ while True:
 
 	# write digital value to log file
 	writer.writerow([record_time, value_now, count, product_rate])
-	#print(record_time, value_now, count, product_rate)
+	print(record_time, value_now, count, product_rate)
 	time.sleep(wait_time)
