@@ -11,18 +11,20 @@ sampling_freq = 50
 
 # date
 date = datetime.now().strftime("%Y%m%d_%H%M%S")
+logfile = date + "log.txt"
 
 # select GPIO.BCM or GPIO.BOARD
 # GPIO.BCM is based on GPIO pin number
 # GPIO.BOARD is based on Raspberry Pi's pin number
 GPIO.setmode(GPIO.BCM)
 # define input pin number
-PIN = xx
+PIN = 10
 # initial setting to use GPIO
 GPIO.setup(PIN, GPIO.IN)
 
 # open file to record log
-fp = open(date + "log.txt", "w")
+fp = open(logfile, "w")
+print("opened log file ", logfile)
 
 while True:
 	# digit
