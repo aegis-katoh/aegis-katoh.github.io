@@ -5,6 +5,7 @@ import RPi.GPIO as GPIO
 # Library to get date
 from datetime import datetime
 
+import signal
 import time
 import csv
 from os import path
@@ -12,6 +13,9 @@ from os import path
 # initial setting
 # sampling frequency [Hz]
 sampling_freq = 5
+# show interval [sec]
+interval = 10
+
 wait_time = 1. / sampling_freq
 value_now = 0
 value_past = 1
@@ -30,50 +34,44 @@ PIN = 10
 # initial setting to use GPIO
 GPIO.setup(PIN, GPIO.IN)
 
-# open file to record log
-if path.exists(logfile,):
-	writer = csv.writer(open(logfile, "a"))
-else:
-	writer = csv.writer(open(logfile, "a"))
-	writer.writerow(["Time", "Switch", "Count", "Rate"])
-
 # start time
 start_time = datetime.now().timestamp()
 
-def record(self):
+def sampling(self):
 	# value now
 	value_now = GPIO.input(PIN)
 	# differential
 	diff = value_now - value_past
 
-	if (diff == 1):
-		count += 1
+	count = counter(diff)
 
 	# product per minute
-	product_rate = count / 
-
-
-
-while True:
-	# record time
-	record_time = datetime.now().strftime("%H:%M:%S.%f")
-	# digit
-	value_now = GPIO.input(PIN)
-	# differential
-	diff = value_now - value_past
-
-	if (diff == 1):
-		count += 1
-
-	# time to calclate differential
-	now_time = datetime.now().timestamp()
-
-	# product per minute
-	product_rate = count / (now_time - start_time) * 60
+	product_rate = count / interval * 60
 
 	value_past = value_now
+
+def counter(self, diff):
+	if (diff == 1):
+		count += 1
+	return count
+
+def record(self, count, product_rate):
+	# open file to record log
+	if path.exists(logfile,):
+		writer = csv.writer(open(logfile, "a"))
+	else:
+		writer = csv.writer(open(logfile, "a"))
+		writer.writerow(["Time", "Count", "Rate"])
+
+	# record time
+	record_time = datetime.now().strftime("%H:%M:%S.%f")
 
 	# write digital value to log file
 	writer.writerow([record_time, value_now, count, product_rate])
 	print(record_time, value_now, count, product_rate)
+
+signal.signal(signal.SIGALRM, sampling)
+signal.setitimer(signal.IRIMER_REAL, wait_time, wait_time)
+
+while True:
 	time.sleep(wait_time)
