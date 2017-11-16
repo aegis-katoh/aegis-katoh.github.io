@@ -10,7 +10,7 @@ import csv
 from os import path
 
 # sampling frequency [Hz]
-sampling_freq = 2
+sampling_freq = 5
 wait_time = 1. / sampling_freq
 value_now = 0
 value_past = 1
