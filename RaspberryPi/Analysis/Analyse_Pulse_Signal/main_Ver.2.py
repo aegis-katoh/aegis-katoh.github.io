@@ -102,6 +102,6 @@ while True:
 	edge = detect_edge(present_value, previous_value)
 	count = count_edge(edge, count)
 	print(datetime.now().strftime("%H:%M:%S.%f"), count, edge)
-	wait_time = calc_timedelta(standard_time, sampling_period)
+	wait_time = sampling_period - calc_timedelta(standard_time, sampling_period)
 	print(wait_time)
 	sleep(wait_time)
