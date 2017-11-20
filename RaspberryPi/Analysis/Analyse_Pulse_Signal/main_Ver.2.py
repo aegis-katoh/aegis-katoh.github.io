@@ -74,7 +74,7 @@ def reset_count():
 
 	return count
 
-def save_to_csv(dum1, dum2, logfile, product_rate):
+def save_to_csv(dum1, dum2, logfile):
 	if path.exists(logfile, ):
 		writer = csv.writer(open(logfile, "a"))
 	else:
@@ -90,7 +90,7 @@ def save_to_csv(dum1, dum2, logfile, product_rate):
 
 standard_time = datetime.now()
 
-signal.signal(signal.SIGALRM, save_to_csv(logfile, product_rate))
+signal.signal(signal.SIGALRM, save_to_csv(logfile))
 signal.setitimer(signal.ITIMER_REAL, 1, save_period)
 
 while True:
