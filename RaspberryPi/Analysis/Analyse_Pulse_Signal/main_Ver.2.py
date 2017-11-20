@@ -11,6 +11,7 @@ import signal
 # sampling frequency [Hz]
 sampling_rate = 5
 sampling_period = timedelta(seconds = 1. / sampling_rate)
+print(sampling_period)
 # save period [sec]
 save_period = 10
 present_value = 0
@@ -100,4 +101,5 @@ while True:
 	count = count_edge(edge, count)
 	print(datetime.now().strftime("%H:%M:%S.%f"), count, edge)
 	wait_time = calc_timedelta(standard_time, sampling_period)
+	print(wait_time)
 	sleep(wait_time)
