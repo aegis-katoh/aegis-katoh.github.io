@@ -71,7 +71,7 @@ def reset_count():
 
 	return count
 
-def save_to_csv(logfile, count, product_rate):
+def save_to_csv(logfile, product_rate):
 	if path.exists(logfile, ):
 		writer = csv.writer(open(logfile, "a"))
 	else:
