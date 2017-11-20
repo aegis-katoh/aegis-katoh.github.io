@@ -79,7 +79,7 @@ def save_to_csv(dum1, dum2, logfile):
 		writer = csv.writer(open(logfile, "a"))
 	else:
 		writer = csv.writer(open(logfile, "a"))
-		writer.writeroe(["Time", "Count", "Rate"])
+		writer.writerow(["Time", "Count", "Rate"])
 
 	record_time = datetime.now().strftime("%H:%M:%S")
 	product_rate = calc_product_rate(count, save_period)
