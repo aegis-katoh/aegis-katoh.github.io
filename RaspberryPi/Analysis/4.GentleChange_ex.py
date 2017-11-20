@@ -67,11 +67,11 @@ def record(self, count, product_rate):
 	record_time = datetime.now().strftime("%H:%M:%S.%f")
 
 	# write digital value to log file
-	writer.writerow([record_time, value_now, count, product_rate])
+	writer.writerow([record_time, count, product_rate])
 	print(record_time, value_now, count, product_rate)
 
 signal.signal(signal.SIGALRM, sampling)
-signal.setitimer(signal.IRIMER_REAL, wait_time, wait_time)
+signal.setitimer(signal.ITIMER_REAL, wait_time, wait_time)
 
 while True:
 	time.sleep(wait_time)
