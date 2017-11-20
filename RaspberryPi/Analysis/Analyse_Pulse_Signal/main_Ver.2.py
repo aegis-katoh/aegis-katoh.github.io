@@ -61,7 +61,9 @@ def count_edge(edge, count):
 def calc_timedelta(standard_time, sampling_period):
 	current_time = datetime.now()
 	dif = current_time - standard_time
+	print(standard_time, sampling_period, diff)
 	timedelta = (dif % sampling_period).total_seconds()
+	print(timedelta)
 
 	return timedelta
 
