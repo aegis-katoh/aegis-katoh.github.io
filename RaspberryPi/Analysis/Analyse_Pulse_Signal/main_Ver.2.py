@@ -10,7 +10,7 @@ import signal
 
 # sampling frequency [Hz]
 sampling_rate = 5
-sampling_period = 1. / sampling_rate
+sampling_period = timedelta(seconds = 1. / sampling_rate)
 # save period [sec]
 save_period = 10
 present_value = 0
