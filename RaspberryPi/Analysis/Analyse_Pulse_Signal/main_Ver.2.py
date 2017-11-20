@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 from time import sleep
 import csv
+import signal
 
 # sampling frequency [Hz]
 sampling_rate = 5
