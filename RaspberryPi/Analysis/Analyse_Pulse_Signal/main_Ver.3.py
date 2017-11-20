@@ -77,6 +77,9 @@ def reset_count():
 
 def save_to_csv(dum1, dum2):
 	global logfile
+	global count
+	global save_period
+
 	if path.exists(logfile, ):
 		writer = csv.writer(open(logfile, "a"))
 	else:
@@ -87,7 +90,6 @@ def save_to_csv(dum1, dum2):
 	product_rate = calc_product_rate(count, save_period)
 	writer.writerow([record_time, count, product_rate])
 
-	global count
 	count = reset_count()
 
 standard_time = datetime.now()
