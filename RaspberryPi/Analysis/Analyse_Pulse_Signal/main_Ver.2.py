@@ -85,9 +85,6 @@ def save_to_csv(logfile, product_rate):
 	global count
 	count = reset_count()
 
-# Main program
-initial_setting()
-
 standard_time = datetime.now()
 
 signal.signal(signal.SIGALRM, save_to_csv)
