@@ -1,6 +1,6 @@
 # This program is written in Python3
 
-import PRi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from os import path
 from datetime import datetime
 from datetime import timedelta
