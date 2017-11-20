@@ -90,7 +90,7 @@ def save_to_csv(dum1, dum2, logfile):
 
 standard_time = datetime.now()
 
-signal.signal(signal.SIGALRM, save_to_csv(dum1, dum2, logfile))
+signal.signal(signal.SIG_DFL, save_to_csv(dum1, dum2, logfile))
 signal.setitimer(signal.ITIMER_REAL, 1, save_period)
 
 while True:
