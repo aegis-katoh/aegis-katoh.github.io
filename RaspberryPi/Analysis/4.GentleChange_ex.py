@@ -37,7 +37,7 @@ GPIO.setup(PIN, GPIO.IN)
 # start time
 start_time = datetime.now().timestamp()
 
-def sampling(self):
+def sampling(arg1, arg2):
 	# value now
 	value_now = GPIO.input(PIN)
 	# differential
@@ -71,7 +71,7 @@ def record(self, count, product_rate):
 	print(record_time, value_now, count, product_rate)
 
 signal.signal(signal.SIGALRM, sampling)
-signal.setitimer(signal.IRIMER_REAL, wait_time, wait_time)
+signal.setitimer(signal.ITIMER_REAL, wait_time, wait_time)
 
 while True:
 	time.sleep(wait_time)
