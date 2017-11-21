@@ -109,10 +109,8 @@ def save_to_csv(dum1, dum2):
 
 	# record data
 	writer.writerow([record_time, count, product_rate])
-	print(f.closed)
 	# close csv file
 	f.close()
-	print(f.closed)
 
 	count = reset_count()
 
