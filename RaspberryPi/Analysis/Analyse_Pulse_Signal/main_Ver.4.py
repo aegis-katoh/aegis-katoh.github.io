@@ -100,10 +100,11 @@ def save_to_csv(dum1, dum2):
 	product_rate = calc_product_rate(count, save_period)
 
 	# open csv file to record data
-	f = open(logfile, "a")
 	if path.exists(logfile, ):
+		f = open(logfile, "a")
 		writer = csv.writer(f)
 	else:
+		f = open(logfile, "a")
 		writer = csv.writer(f)
 		writer.writerow(["Time", "Count", "Rate"])
 
