@@ -81,7 +81,7 @@ def calc_timedelta(standard_time, sampling_period):
 
 def calc_product_rate(count, save_period):
 	# calculate product rate
-	product_rate = count / save_period * 60
+	product_rate = int(count / save_period * 60)
 
 	return product_rate
 
