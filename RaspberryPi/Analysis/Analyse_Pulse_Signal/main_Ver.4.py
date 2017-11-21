@@ -96,7 +96,7 @@ def save_to_csv(dum1, dum2):
 	global count
 	global save_period
 
-	record_time = datetime.now().strftime("%H:%M:%S")
+	record_time = datetime.now().strftime("%X")
 	product_rate = calc_product_rate(count, save_period)
 
 	# open csv file to record data
