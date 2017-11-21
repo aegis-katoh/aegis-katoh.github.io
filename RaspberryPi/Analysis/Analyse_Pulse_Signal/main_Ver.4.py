@@ -126,6 +126,6 @@ while True:
 	present_value = get_sensor_value(PIN)
 	edge = detect_edge(present_value, previous_value)
 	count = count_edge(edge, count)
-	print(datetime.now().strftime("%H:%M:%S.%f"), count, edge)
+	# print(datetime.now().strftime("%H:%M:%S.%f"), count, edge)
 	wait_time = sampling_period.total_seconds() - calc_timedelta(standard_time, sampling_period)
 	sleep(wait_time)
