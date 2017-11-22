@@ -37,7 +37,7 @@ GPIO.setup(PIN, GPIO.IN)
 # start time
 start_time = datetime.now().timestamp()
 
-def sampling(self):
+def sampling(arg1, arg2):
 	# value now
 	value_now = GPIO.input(PIN)
 	# differential

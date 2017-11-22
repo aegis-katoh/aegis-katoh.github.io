@@ -81,7 +81,7 @@ def calc_timedelta(standard_time, sampling_period):
 
 def calc_product_rate(count, save_period):
 	# calculate product rate
-	product_rate = count / save_period * 60
+	product_rate = int(count / save_period * 60)
 
 	return product_rate
 
@@ -96,7 +96,7 @@ def save_to_csv(dum1, dum2):
 	global count
 	global save_period
 
-	record_time = datetime.now().strftime("%H:%M:%S")
+	record_time = datetime.now().strftime("%X")
 	product_rate = calc_product_rate(count, save_period)
 
 	# open csv file to record data
