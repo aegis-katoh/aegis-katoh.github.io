@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import time
 
 # define input pin number
-PIN = 18
+PIN = 21
 # select GPIO.BCM or GPIO.BOARD
 # GPIO.BCM is based on GPIO pin number
 # GPIO.BOARD is based on Raspberry Pi's pin number
