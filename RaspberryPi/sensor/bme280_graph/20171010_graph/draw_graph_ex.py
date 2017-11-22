@@ -9,7 +9,7 @@ filepath="../../data/20171003_BME280/20170925_bme280.csv"
 
 data = pd.read_csv(filepath, parse_dates=[0]) #1
 
-print data
+#print data
 
 plt.subplots_adjust(hspace=0.3) #2
 
