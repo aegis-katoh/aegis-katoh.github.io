@@ -1,16 +1,75 @@
+<?php
+#-------------- file information --------------#
+	# coding : UTF-8
+	# developer : Masazumi Katoh
+	# filename : 20171013_home_Ver.1.1.0.php
+	# last update : 2017/10/13
+	# version : 1.1.0
+#-------------- file information --------------#
+
+#-------------- system setting --------------#
+	# Set timezone
+	date_default_timezone_set("Asia/Tokyo");
+#-------------- system setting --------------#
+
+#-------------- initial setting --------------#
+	# interval [min]
+	$interval = 1;
+	# min -> sec
+	$interval *=60;
+	# filepath
+	$filepath = "../graph/graph.png";
+	# path of current value
+	$current = "/var/www/html/data/CurrentValue/";
+#-------------- initial setting --------------#
+
+#-------------- parameter definition --------------#
+	# current time
+	$timestamp = time();
+	# updated time
+	$mod = filemtime( $filepath );
+	# remainder [sec]
+	$remainder = $timestamp % $interval;
+	# compensate
+	$compensate = $interval - $remainder;
+	# next update time
+	$nextupdate = $timestamp + $compensate;
+#-------------- parameter definition --------------#
+
+#-------------- debug --------------#
+	# interval [sec]
+	#	echo "$interval <br>";
+	# current time [sec]
+	#	echo "$timestamp <br>";
+	# remainder [sec]
+	#	echo "$remainder <br>";
+#-------------- debug --------------#
+ ?>
+
 <! DOCTYPE html >
 <html>
 	<head>
-		<meta http-equiv="Refresh" content=<?=60>
-		<link href="home.css" rel="stylesheet" type="text/css">
-		<title>Environmental Measurement</title>
+		<meta http-equiv="Refresh" content="60">
 	</head>
 	<body>
+		<! time information >
+		<div align="left">
+			<?= "Current Time：", date("Y/m/d H:i:s", $timestamp), "<br>" ?>
+			<?= "Last Update：", date("Y/m/d H:i:s", $mod), "<br>" ?>
+			<?= "Next Update：", date("Y/m/d H:i:s", $nextupdate), "<br>" ?>
+		</div>
+		<br>
+		-------------- Current Value --------------
+		<br>
+		<div align="left">
+			<?= "Temperature：", readfile($current."temperature.txt"), " [deg]<br>" ?>
+			<?= "Humidity：", readfile($current."humidity.txt"), " [%]<br>" ?>
+			<?= "Pressure：", readfile($current."pressure.txt"), " [hPa]<br>" ?>
+		</div>
+		-----------------------------------------------
+		<br>
 
 		<! graph output >
-		<div class="img_block">
-			<img id="graph" src="graph.png" , style="width:90%; height:auto", alt="Temperature, Himudity and Pressure">
-		</div>
-
+		<img src = <?= "$filepath" ?> , style="width:100%; height:auto">
 	</body>
 </html>
