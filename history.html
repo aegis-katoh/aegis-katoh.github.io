@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/initialize_firebase.js"></script>
+    <script type="text/javascript" src="js/history.js"></script>
+    <title>PythonHuro 履歴観覧ページ</title>
+</head>
+<body>
+    <form id="sb_name_form" action="">
+        <select id="id_names" size="1">
+            <option selected disabled>-- 名前を選択してください --</option>
+            <option value="masazumi">masazumi</option>
+            <option value="kanazashi">kanazashi</option>
+        </select>
+    </form>
+
+    <input type="button" value="Bottun" onclick="clickBtn();" />
+
+    <span id="span"></span>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script>
+//    Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyApB6lt80V6Rsb5u77KUT4sODKinMJFtJo",
+        authDomain: "manage-our-work.firebaseapp.com",
+        databaseURL: "https://manage-our-work.firebaseio.com",
+        projectId: "manage-our-work",
+        storageBucket: "manage-our-work.appspot.com",
+        messagingSenderId: "1000013242108"
+    };
+    firebase.initializeApp(config);
+//    set_data();
+    ref = initializeFirebase();
+
+//    get_history(ref);
+</script>
+</body>
+</html>

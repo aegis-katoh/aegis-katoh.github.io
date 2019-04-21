@@ -1,75 +1,59 @@
-<?php
-#-------------- file information --------------#
-	# coding : UTF-8
-	# developer : Masazumi Katoh
-	# filename : 20171013_home_Ver.1.1.0.php
-	# last update : 2017/10/13
-	# version : 1.1.0
-#-------------- file information --------------#
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<script type="text/javascript" src="set.js"></script>-->
+	<link rel="stylesheet" href="css/stylesheet.css">
+    <script type="text/javascript" src="js/initialize_firebase.js"></script>
+    <script type="text/javascript" src="js/get.js"></script>
+   <title>PythonHuro 日報システム</title>
+</head>
+<body>
+    <div class="info_container">
+        <div class="name_container">
+            <p>Name</p>
+            <form id="name_form" action="">
+                <input type="text" id="id_nameBox" placeholder="your name" />
+            </form>
+        </div>
+        <div class="date_container">
+            <p>Date</p>
+            <form id="date_form" action="">
+                <input type="text" id="id_dateBox" placeholder="20190419" />
+            </form>
+        </div>
+    </div>
+    <div class="work_container">
+        <p>What you did</p>
+        <form id="work_form" action="">
+            <textarea  id="id_workBox" cols="30" rows="10" placeholder="what you did"></textarea>
+        </form>
+    </div>
+    <div class="button_container">
+        <input type="button" value="Submit" onclick="onButtonClick(ref);" />
+    </div>
 
-#-------------- system setting --------------#
-	# Set timezone
-	date_default_timezone_set("Asia/Tokyo");
-#-------------- system setting --------------#
+    <hr/>
 
-#-------------- initial setting --------------#
-	# interval [min]
-	$interval = 1;
-	# min -> sec
-	$interval *=60;
-	# filepath
-	$filepath = "../graph/graph.png";
-	# path of current value
-	$current = "/var/www/html/data/CurrentValue/";
-#-------------- initial setting --------------#
+    履歴観覧ページは
+    <a href="history.html" target="_blank">こちら</a>
+    からどうぞ
 
-#-------------- parameter definition --------------#
-	# current time
-	$timestamp = time();
-	# updated time
-	$mod = filemtime( $filepath );
-	# remainder [sec]
-	$remainder = $timestamp % $interval;
-	# compensate
-	$compensate = $interval - $remainder;
-	# next update time
-	$nextupdate = $timestamp + $compensate;
-#-------------- parameter definition --------------#
-
-#-------------- debug --------------#
-	# interval [sec]
-	#	echo "$interval <br>";
-	# current time [sec]
-	#	echo "$timestamp <br>";
-	# remainder [sec]
-	#	echo "$remainder <br>";
-#-------------- debug --------------#
- ?>
-
-<! DOCTYPE html >
-<html>
-	<head>
-		<meta http-equiv="Refresh" content="60">
-	</head>
-	<body>
-		<! time information >
-		<div align="left">
-			<?= "Current Time：", date("Y/m/d H:i:s", $timestamp), "<br>" ?>
-			<?= "Last Update：", date("Y/m/d H:i:s", $mod), "<br>" ?>
-			<?= "Next Update：", date("Y/m/d H:i:s", $nextupdate), "<br>" ?>
-		</div>
-		<br>
-		-------------- Current Value --------------
-		<br>
-		<div align="left">
-			<?= "Temperature：", readfile($current."temperature.txt"), " [deg]<br>" ?>
-			<?= "Humidity：", readfile($current."humidity.txt"), " [%]<br>" ?>
-			<?= "Pressure：", readfile($current."pressure.txt"), " [hPa]<br>" ?>
-		</div>
-		-----------------------------------------------
-		<br>
-
-		<! graph output >
-		<img src = <?= "$filepath" ?> , style="width:100%; height:auto">
-	</body>
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyApB6lt80V6Rsb5u77KUT4sODKinMJFtJo",
+        authDomain: "manage-our-work.firebaseapp.com",
+        databaseURL: "https://manage-our-work.firebaseio.com",
+        projectId: "manage-our-work",
+        storageBucket: "manage-our-work.appspot.com",
+        messagingSenderId: "1000013242108"
+    };
+    firebase.initializeApp(config);
+    // set_data();
+    ref = initializeFirebase();
+</script>
+</body>
 </html>

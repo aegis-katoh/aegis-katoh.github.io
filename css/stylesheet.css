@@ -1,0 +1,42 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+
+    max-width: 1000px;
+    margin: 0px auto;
+}
+
+p {
+    font-size: 16px;
+    display: inline;
+}
+
+.info_container {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.name_container, .date_container {
+    width: 42.5%;
+    margin: 0px 2.5%;
+}
+
+.work_container, .button_container {
+    width: 90%;
+    margin: 10px 2.5%;
+}
+
+
+input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 3px 0 0 0;
+}
+
+textarea {
+    resize: vertical;
+    height: 50px;
+}
