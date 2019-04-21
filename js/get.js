@@ -14,7 +14,9 @@ function onButtonClick(ref){
 			ref.child(name).child("work").child(date).set({
 				content: work
 			});
-			//location.reload(true);
+			document.forms.date_form.id_dateBox.value = "";
+			document.forms.work_form.id_workBox.value = "";
+
 		} else {
 			text_failure_alert();
 		}
