@@ -55,7 +55,7 @@ function onButtonClick(ref){
 }
 
 function is_correct_username(name){
-	var datas="";
+	var datas=".";
 	console.log("is_correct_username() called");
 	ref.child(name).on("value", function(snapshot){
 		datas = snapshot.val();
